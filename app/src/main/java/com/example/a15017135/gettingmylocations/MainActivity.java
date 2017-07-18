@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements
                     mGoogleApiClient);
             LocationRequest mLocationRequest = LocationRequest.create();
             mLocationRequest.setPriority(LocationRequest
-                    .PRIORITY_BALANCED_POWER_ACCURACY);
+                    .PRIORITY_HIGH_ACCURACY);
             mLocationRequest.setInterval(10000);
             mLocationRequest.setFastestInterval(5000);
             mLocationRequest.setSmallestDisplacement(100);
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements
 
             try {
                 FileWriter writer = new FileWriter(targetFile, true);
-                writer.write("Latitude: "+ latitude + "\n" + "Longtitude: " + longtitude);
+                writer.write("Latitude: "+ latitude + "\n" + "Longtitude: " + longtitude + "\n");
                 writer.flush();
                 writer.close();
             } catch (Exception e) {
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements
 
             File targetFile = new File(folderLocation, "data.txt");
             FileWriter writer = new FileWriter(targetFile, true);
-            writer.write("Latitude: "+ latitude + "\n" + "Longtitude: " + longtitude);
+            writer.write("Latitude: "+ latitude + "\n" + "Longtitude: " + longtitude + "\n");
             writer.flush();
             writer.close();
         } catch (Exception e) {
@@ -194,7 +194,6 @@ public class MainActivity extends AppCompatActivity implements
                     Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
-        //the detected location is given by the variable location in the signature
         Toast.makeText(this, "Lat : " + location.getLatitude() + " Lng : " +
                 location.getLongitude(), Toast.LENGTH_SHORT).show();
     }
